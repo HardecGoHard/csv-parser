@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Загрузка файла</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+</head>
+<body>
+<form th:method="post" th:action="@{/upload-csv-file}" enctype="multipart/form-data">
+    <label for="transaction">Выберите аватар для загрузки</label>
+    <input id="transaction" name="transaction" type="file"/>
+    <button type="submit" class="formButton">Отправить</button>
+</form>
+
+</body>
+</html>
