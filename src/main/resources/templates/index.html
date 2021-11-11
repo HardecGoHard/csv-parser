@@ -1,16 +1,37 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Загрузка файла</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
+    <link th:href="@{../default.css}" rel="stylesheet">
 </head>
 <body>
-<form th:method="post" th:action="@{/upload-csv-file}" enctype="multipart/form-data">
-    <label for="transaction">Выберите аватар для загрузки</label>
-    <input id="transaction" name="transaction" type="file"/>
-    <button type="submit" class="formButton">Отправить</button>
-</form>
-
+<header th:replace="fragments/header :: header"></header>
+<div class="wrapper">
+    <form th:method="post" th:action="@{/upload-csv-file}" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="transaction" class="form-label">Выберите файл транзакций</label>
+            <input id="transaction" name="transaction" type="file" class="form-control"
+                   aria-describedby="inputGroupFileAddon04"
+                   aria-label="Upload">
+        </div>
+        <div class="mb-3">
+            <label for="transaction_type" class="form-label">Выберите файл типов транзакций</label>
+            <input id="transaction_type" name="transaction_type" type="file" class="form-control"
+                   aria-describedby="inputGroupFileAddon04"
+                   aria-label="Upload">
+        </div>
+        <div class="mb-3">
+            <label for="mcc_codes" class="form-label">Выберите файл mcc-Кодов</label>
+            <input id="mcc_codes" name="mcc_codes" type="file" class="form-control"
+                   aria-describedby="inputGroupFileAddon04"
+                   aria-label="Upload">
+        </div>
+        <button type="submit" class="btn btn-outline-primary form-button">Отправить</button>
+    </form>
+</div>
 </body>
 </html>

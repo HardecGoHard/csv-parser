@@ -1,0 +1,15 @@
+
+.wrapper {
+    background: #FFF;
+    margin: 5px auto;
+    width: 700px;
+}
+.input-group{
+    padding: 5px 5px;
+}
+.form-button{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
