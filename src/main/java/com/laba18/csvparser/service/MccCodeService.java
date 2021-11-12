@@ -25,7 +25,6 @@ public class MccCodeService {
     }
 
     private MccCode mapMccCodeFromDto(MccCodeDto mccCodeDto) {
-        System.out.println(mccCodeDto);
         MccCode mccCode = new MccCode();
         mccCode.setId(mccCodeDto.getMccCode());
         mccCode.setMccDescription(mccCodeDto.getMccDescription());

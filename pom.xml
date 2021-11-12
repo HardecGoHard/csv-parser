@@ -57,6 +57,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>csv-parser</finalName>
     </build>
 
 </project>

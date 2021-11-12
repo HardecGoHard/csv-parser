@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MccCodeRepository extends JpaRepository<MccCode, Long> {
     @Modifying
-    @Query(value = "TRUNCATE TABLE mcc_codes CASCADE ", nativeQuery = true)
+    @Query(value = "TRUNCATE TABLE mcc_code CASCADE ", nativeQuery = true)
     void truncateTable();
 }

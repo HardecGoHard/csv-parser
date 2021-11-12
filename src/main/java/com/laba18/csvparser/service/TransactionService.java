@@ -1,12 +1,14 @@
 package com.laba18.csvparser.service;
 
 import com.laba18.csvparser.dto.TransactionDto;
+import com.laba18.csvparser.dto.TransactionTableDto;
 import com.laba18.csvparser.entity.MccCode;
 import com.laba18.csvparser.entity.Transaction;
 import com.laba18.csvparser.entity.TransactionType;
 import com.laba18.csvparser.exception.DataParseCsvException;
 import com.laba18.csvparser.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,10 +28,27 @@ public class TransactionService {
     @Transactional
     public void saveAllTransactions(List<TransactionDto> transactionDtoList) {
         transactionRepository.truncateTable();
-        List<Transaction> transactionList = transactionDtoList.stream()
+        List<Transaction> transactionList = transactionDtoList
+                .stream()
                 .map(this::mapToTransactionFromDto)
                 .collect(Collectors.toList());
         transactionRepository.saveAll(transactionList);
+    }
+
+    @Transactional
+    public List<TransactionTableDto> getAllTransactionsGroupingByDate() {
+        return transactionRepository.getAllTransactionsGroupingByTime();
+    }
+
+    private TransactionDto getTransactionDto(Transaction x) {
+        TransactionDto transactionDto = new TransactionDto();
+        transactionDto.setAmount(x.getAmount());
+        transactionDto.setCustomerId(x.getCustomerId());
+        transactionDto.setMccCode(x.getMccCode().getId());
+        transactionDto.setTrDatetime(x.getTrDay().toString());
+        transactionDto.setTerminalId(x.getTerminalId());
+        transactionDto.setTrTypeCode(x.getTrType().getId());
+        return transactionDto;
     }
 
     private Transaction mapToTransactionFromDto(TransactionDto transactionDto) {

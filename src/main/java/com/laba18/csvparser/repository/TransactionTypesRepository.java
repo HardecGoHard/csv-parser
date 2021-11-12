@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TransactionTypesRepository extends JpaRepository<TransactionType, Long> {
     @Modifying
-    @Query(value = "TRUNCATE TABLE tr_types CASCADE", nativeQuery = true)
+    @Query(value = "TRUNCATE TABLE tr_type CASCADE", nativeQuery = true)
     void truncateTable();
 
 }

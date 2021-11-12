@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tr_types")
+@Table(name = "tr_type")
 public class TransactionType {
     @Id
     private Long id;
@@ -15,7 +15,6 @@ public class TransactionType {
     private String description;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tr_type_id")
     private List<Transaction> transactions;
 
     public TransactionType() {

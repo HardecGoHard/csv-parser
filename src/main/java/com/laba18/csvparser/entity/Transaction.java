@@ -17,6 +17,7 @@ public class Transaction extends BaseEntity<Long> {
     private MccCode mccCode;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tr_type_id")
     private TransactionType trType;
 
     private Double amount;

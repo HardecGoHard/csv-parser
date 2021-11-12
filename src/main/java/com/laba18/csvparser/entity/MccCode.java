@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "mcc_codes")
-public class MccCode  {
+@Table(name = "mcc_code")
+public class MccCode {
     @Id
     private Long id;
 
