@@ -8,7 +8,6 @@ import com.laba18.csvparser.entity.TransactionType;
 import com.laba18.csvparser.exception.DataParseCsvException;
 import com.laba18.csvparser.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,18 +36,7 @@ public class TransactionService {
 
     @Transactional
     public List<TransactionTableDto> getAllTransactionsGroupingByDate() {
-        return transactionRepository.getAllTransactionsGroupingByTime();
-    }
-
-    private TransactionDto getTransactionDto(Transaction x) {
-        TransactionDto transactionDto = new TransactionDto();
-        transactionDto.setAmount(x.getAmount());
-        transactionDto.setCustomerId(x.getCustomerId());
-        transactionDto.setMccCode(x.getMccCode().getId());
-        transactionDto.setTrDatetime(x.getTrDay().toString());
-        transactionDto.setTerminalId(x.getTerminalId());
-        transactionDto.setTrTypeCode(x.getTrType().getId());
-        return transactionDto;
+        return transactionRepository.getAllTransactionsGroupingByDateTime();
     }
 
     private Transaction mapToTransactionFromDto(TransactionDto transactionDto) {

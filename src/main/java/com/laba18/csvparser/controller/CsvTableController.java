@@ -35,8 +35,8 @@ public class CsvTableController {
     private final TransactionTypeService transactionTypeService;
     private final DataParserFromCSV dataParserFromCSV;
 
-    @Value("${csv.storage.path.nameCSV}")
-    private String path;
+    @Value("${csv.storage.nameCSV}")
+    private  String path;
 
     @Autowired
     public CsvTableController(TransactionService transactionService,

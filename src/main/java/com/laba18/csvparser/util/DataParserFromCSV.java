@@ -21,11 +21,11 @@ import java.util.List;
 
 @Component
 public class DataParserFromCSV {
+    @Value("${csv.storage.nameCSV}")
+    private  String path;
 
-    @Value("${csv.storage.path.nameCSV}")
-    private String path;
 
-    public  <T> List<T> parseDataFromFileToEntityDtoList(MultipartFile file, Class<T> clazz) {
+    public <T> List<T> parseDataFromFileToEntityDtoList(MultipartFile file, Class<T> clazz) {
         List<T> beans;
         try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
             CsvToBeanBuilder builder = new CsvToBeanBuilder(reader).withType(clazz);
@@ -43,10 +43,8 @@ public class DataParserFromCSV {
         return beans;
     }
 
-    public void parseFromEntityToCsv(List<TransactionTableDto> transactionTableDtoList) {
-        try (
-                Writer writer = Files.newBufferedWriter(Paths.get(path));
-        ) {
+    public void parseFromEntityToCsv(List<TransactionTableDto> transactionTableDtoList){
+        try (Writer writer = Files.newBufferedWriter(Paths.get(path))) {
             StatefulBeanToCsv<TransactionTableDto> beanToCsv = new StatefulBeanToCsvBuilder(writer)
                     .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
                     .build();

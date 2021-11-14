@@ -1,7 +1,7 @@
 version: '2'
 services:
   app:
-    image: 'csv-parser:latest'
+    image: 'parser-csv:latest'
     ports:
       - "8080:8080"
     build:

@@ -18,9 +18,9 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     @Query("SELECT new com.laba18.csvparser.dto.TransactionTableDto(concat(t.trDay,' день'), AVG(t.amount), t.mccCode.id) " +
             "FROM Transaction AS t " +
             "GROUP BY t.trDay,t.mccCode.id " +
-            "HAVING 6 < (SELECT COUNT(tr.mccCode.id) " +
+            "HAVING 3 < (SELECT COUNT(tr.mccCode.id) " +
             "                   FROM Transaction AS  tr" +
             "                   WHERE tr.trDay = t.trDay AND t.mccCode.id = tr.mccCode.id)" +
             "ORDER BY t.trDay")
-    List<TransactionTableDto> getAllTransactionsGroupingByTime();
+    List<TransactionTableDto> getAllTransactionsGroupingByDateTime();
 }
