@@ -16,3 +16,7 @@
     text-align: center;
 }
 
+.validation-error{
+    color: darkred;
+}
+
